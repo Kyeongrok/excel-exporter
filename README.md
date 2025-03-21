@@ -2,13 +2,14 @@
 
 ## 요구사항은
 1. '엑셀 파일을 다운로드 하는 API'입니다. 
-2. Monitoring이라는 Domain과 Power라는 Domain이 있고  
-3. 각 도메인은 요구되는 엑셀파일의 모양이 다릅니다.
+2. Heap메모리가 꽉 차지 않도록 관리 해야 합니다.
+3. Monitoring이라는 Domain과 Power라는 Domain이 있고  
+4. 각 도메인은 요구되는 엑셀파일의 모양이 다릅니다.
    - Monitoring의 경우 컬럼이 quantity, spm이 들어갑니다.
    - Power의 경우 컬럼이 voltageL1L2, voltageL2L3, voltageL3L1 이 들어갑니다.
-4. 달라지는 부분은 Column과 Row의 생김새가 달라집니다.
+5. 달라지는 부분은 Column과 Row의 생김새가 달라집니다.
 
-5. 다국어를 지원 합니다. 언어는 Controller를 통해 입력 받습니다. ex)ko, en, jp 등
+6. 다국어를 지원 합니다. 언어는 Controller를 통해 입력 받습니다. ex)ko, en, jp 등
 
 # ERD
 ```mermaid
@@ -22,7 +23,7 @@ classDiagram
         +make()
     }
 
-    class ExcelWorkbookMaker {
+    class ExcelHeapSafeMaker {
         <<abstract>>
         #addCellsCallback()
         +make()
@@ -37,9 +38,9 @@ classDiagram
     }
 
     MonitoringDataService --> ExcelMaker : uses
-    ExcelMaker <|-- ExcelWorkbookMaker : implements
-    ExcelWorkbookMaker <|-- MonitoringExcelMaker : extends
-    ExcelWorkbookMaker <|-- PowerExcelMaker : extends
+    ExcelMaker <|-- ExcelHeapSafeMaker : implements
+    ExcelHeapSafeMaker <|-- MonitoringExcelMaker : extends
+    ExcelHeapSafeMaker <|-- PowerExcelMaker : extends
 ```
 
 ## 핵심 로직

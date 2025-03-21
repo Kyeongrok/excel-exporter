@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Slf4j
-public abstract class ExcelWorkbookMaker<T> implements ExcelMaker<T> {
+public abstract class ExcelHeapSafeMaker<T> implements ExcelMaker<T> {
 
     private final SXSSFWorkbook workbook = new SXSSFWorkbook();
     protected SXSSFSheet sheet;

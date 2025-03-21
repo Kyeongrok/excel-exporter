@@ -1,6 +1,6 @@
 package com.okky.excelexporter2.monitoring.maker;
 
-import com.okky.excelexporter2.excel.ExcelWorkbookMaker;
+import com.okky.excelexporter2.excel.ExcelHeapSafeMaker;
 import com.okky.excelexporter2.monitoring.domain.MonitoringDataDto;
 import lombok.RequiredArgsConstructor;
 import org.apache.poi.ss.usermodel.Row;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class MonitoringExcelMaker extends ExcelWorkbookMaker<MonitoringDataDto> {
+public class MonitoringExcelMaker extends ExcelHeapSafeMaker<MonitoringDataDto> {
 
     @Override
     protected void addCellsCallback(Row row, MonitoringDataDto dto, int adjustedHour) {
