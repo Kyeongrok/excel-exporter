@@ -7,6 +7,9 @@ import org.apache.poi.ss.usermodel.Row;
 public class PowerExcelMaker extends ExcelWorkbookMaker<PowerDataDto> {
     @Override
     protected void addCellsCallback(Row row, PowerDataDto dto, int adjustedHour) {
-
+        int columnCnt = 0;
+        row.createCell(columnCnt++).setCellValue(dto.getVoltageL1L2());
+        row.createCell(columnCnt++).setCellValue(dto.getVoltageL2L3());
+        row.createCell(columnCnt++).setCellValue(dto.getVoltageL3L1());
     }
 }

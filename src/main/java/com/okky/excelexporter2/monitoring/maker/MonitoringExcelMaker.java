@@ -17,9 +17,7 @@ public class MonitoringExcelMaker extends ExcelWorkbookMaker<MonitoringDataDto> 
     @Override
     protected void addCellsCallback(Row row, MonitoringDataDto dto, int adjustedHour) {
         int columnCnt = 0;
-        row.createCell(columnCnt++).setCellValue(dto.getFactoryName());
-        row.createCell(columnCnt++).setCellValue(dto.getMachineName());
-        row.createCell(columnCnt++).setCellValue(dto.getEquipmentName());
+        row.createCell(columnCnt++).setCellValue(dto.getQty());
         row.createCell(columnCnt++).setCellValue(dto.getSpm());
     }
 }
